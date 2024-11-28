@@ -1,9 +1,15 @@
 import json
 import pandas as pd
+from google.colab import drive
+
+# Mount Google Drive
+drive.mount('/content/drive')
+
+# Define file path
+file_path = "/content/drive/My Drive/Training/source data/K2-00010-CL33488-CP33980-02-06-S2.json"
 
 # Load JSON file
-filename = "K2-00010-CL33488-CP33980-02-06-S2.json"
-with open(filename, 'r', encoding='utf-8') as file:
+with open(file_path, 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Extract dialogues
@@ -22,7 +28,7 @@ for session in data["sessionInfo"]:
 df = pd.DataFrame(dialogs)
 
 # Identify gender of each speaker based on personaID
-# Define gender mappings (Assuming speaker1 and speaker2 are '여성')
+# Define gender mappings (Assuming speaker1 and speaker2 are '여자')
 gender_mapping = {
     "33488": "여자",
     "33980": "여자"
@@ -43,5 +49,12 @@ print("\nMale Dialogues:")
 print(male_dialogues)
 
 # Save results to CSV for deeper analysis
-female_dialogues.to_csv("female_dialogues.csv", index=False)
-male_dialogues.to_csv("male_dialogues.csv", index=False)
+output_path_female = "/content/drive/My Drive/Training/analysis/female_dialogues.csv"
+output_path_male = "/content/drive/My Drive/Training/analysis/male_dialogues.csv"
+
+female_dialogues.to_csv(output_path_female, index=False)
+male_dialogues.to_csv(output_path_male, index=False)
+
+print(f"Female dialogues saved to: {output_path_female}")
+print(f"Male dialogues saved to: {output_path_male}")
+
