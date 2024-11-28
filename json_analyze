@@ -1,0 +1,47 @@
+import json
+import pandas as pd
+
+# Load JSON file
+filename = "K2-00010-CL33488-CP33980-02-06-S2.json"
+with open(filename, 'r', encoding='utf-8') as file:
+    data = json.load(file)
+
+# Extract dialogues
+dialogs = []
+for session in data["sessionInfo"]:
+    for dialog in session["dialog"]:
+        dialogs.append({
+            "speaker": dialog["speaker"],
+            "utterance": dialog["utterance"],
+            "personaID": dialog["personaID"],
+            "date": dialog["date"],
+            "time": dialog["time"]
+        })
+
+# Convert to DataFrame for analysis
+df = pd.DataFrame(dialogs)
+
+# Identify gender of each speaker based on personaID
+# Define gender mappings (Assuming speaker1 and speaker2 are '여성')
+gender_mapping = {
+    "33488": "여자",
+    "33980": "여자"
+}
+
+# Add gender information
+df['gender'] = df['personaID'].map(gender_mapping)
+
+# Separate dialogues by gender
+female_dialogues = df[df['gender'] == "여자"]
+male_dialogues = df[df['gender'] == "남자"]  # Update if you have "남자" personas in the data
+
+# Analyze or display dialogue data
+print("Female Dialogues:")
+print(female_dialogues)
+
+print("\nMale Dialogues:")
+print(male_dialogues)
+
+# Save results to CSV for deeper analysis
+female_dialogues.to_csv("female_dialogues.csv", index=False)
+male_dialogues.to_csv("male_dialogues.csv", index=False)
