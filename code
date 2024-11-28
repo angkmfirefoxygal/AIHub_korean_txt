@@ -1,0 +1,15 @@
+from google.colab import drive
+drive.mount('/content/gdrive/', force_remount=True)
+
+%cd gdrive/MyDrive/Colab Notebooks
+%cd Training/source data
+!unzip -qq "/content/gdrive/MyDrive/Colab Notebooks/Training/source data/TS_session2.zip"
+
+%cd /content/gdrive/MyDrive/Colab Notebooks/Training/labeling data
+!unzip -qq  "/content/gdrive/MyDrive/Colab Notebooks/Training/labeling data/TL_session2.zip"
+
+%cd /content/gdrive/MyDrive/Colab Notebooks/Validation/source data
+!unzip -qq "/content/gdrive/MyDrive/Colab Notebooks/Validation/source data/VS_session2.zip"
+
+%cd /content/gdrive/MyDrive/Colab Notebooks/Validation/labeling data
+!unzip -qq "/content/gdrive/MyDrive/Colab Notebooks/Validation/labeling data/VL_session2.zip"
