@@ -1,0 +1,305 @@
+import json
+import pandas as pd
+
+%cd /content/gdrive/MyDrive/Colab Notebooks/Training/source data
+
+##Train Source Data
+import json
+import pandas as pd
+from google.colab import drive
+
+# Mount Google Drive
+# drive.mount('/content/drive')
+
+# Define file path
+file_path = "K2-00010-CL33488-CP33980-02-06-S2.txt"
+
+# Load JSON file
+with open(file_path, 'r', encoding='utf-8') as file:
+    data = json.load(file)
+
+# Extract dialogues
+dialogs = []
+for session in data["sessionInfo"]:
+    for dialog in session["dialog"]:
+        dialogs.append({
+            "speaker": dialog["speaker"],
+            "utterance": dialog["utterance"],
+            "personaID": dialog["personaID"],
+            "date": dialog["date"],
+            "time": dialog["time"]
+        })
+
+# Convert to DataFrame for analysis
+df = pd.DataFrame(dialogs)
+
+# Identify gender of each speaker based on personaID
+# Define gender mappings (Assuming speaker1 and speaker2 are '여자')
+gender_mapping = {
+    "33488": "여자",
+    "33980": "여자"
+}
+
+# Add gender information
+df['gender'] = df['personaID'].map(gender_mapping)
+
+# Separate dialogues by gender
+female_dialogues = df[df['gender'] == "여자"]
+male_dialogues = df[df['gender'] == "남자"]  # Update if you have "남자" personas in the data
+
+# Analyze or display dialogue data
+print("Female Dialogues:")
+print(female_dialogues)
+
+print("\nMale Dialogues:")
+print(male_dialogues)
+
+# Save results to CSV for deeper analysis
+output_path_female = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/female1.csv"
+output_path_male = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/male1.csv"
+
+female_dialogues.to_csv(output_path_female, index=False)
+male_dialogues.to_csv(output_path_male, index=False)
+
+#print(f"Female dialogues saved to: {output_path_female}")
+#print(f"Male dialogues saved to: {output_path_male}")
+
+import json
+import pandas as pd
+from google.colab import drive
+
+# Mount Google Drive
+# drive.mount('/content/drive')
+
+# Define file path
+file_path = "K2-00001-CL33762-CP33206-05-08-S2.txt"
+
+# Load JSON file
+with open(file_path, 'r', encoding='utf-8') as file:
+    data = json.load(file)
+
+# Extract dialogues
+dialogs = []
+for session in data["sessionInfo"]:
+    for dialog in session["dialog"]:
+        dialogs.append({
+            "speaker": dialog["speaker"],
+            "utterance": dialog["utterance"],
+            "personaID": dialog["personaID"],
+            "date": dialog["date"],
+            "time": dialog["time"]
+        })
+
+# Convert to DataFrame for analysis
+df = pd.DataFrame(dialogs)
+
+# Identify gender of each speaker based on personaID
+# Define gender mappings (Assuming speaker1 and speaker2 are '여자')
+gender_mapping = {
+    "33762": "여자",
+    "33206": "남자"
+}
+
+# Add gender information
+df['gender'] = df['personaID'].map(gender_mapping)
+
+# Separate dialogues by gender
+female_dialogues = df[df['gender'] == "여자"]
+male_dialogues = df[df['gender'] == "남자"]  # Update if you have "남자" personas in the data
+
+# Analyze or display dialogue data
+print("Female Dialogues:")
+print(female_dialogues)
+
+print("\nMale Dialogues:")
+print(male_dialogues)
+
+# Save results to CSV for deeper analysis
+output_path_female = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/female2.csv"
+output_path_male = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/male2.csv"
+
+female_dialogues.to_csv(output_path_female, index=False)
+male_dialogues.to_csv(output_path_male, index=False)
+
+#print(f"Female dialogues saved to: {output_path_female}")
+#print(f"Male dialogues saved to: {output_path_male}")
+
+import json
+import pandas as pd
+from google.colab import drive
+
+# Mount Google Drive
+# drive.mount('/content/drive')
+
+# Define file path
+file_path = "K2-00002-CL21649-CP31111-08-09-S2.txt"
+
+# Load JSON file
+with open(file_path, 'r', encoding='utf-8') as file:
+    data = json.load(file)
+
+# Extract dialogues
+dialogs = []
+for session in data["sessionInfo"]:
+    for dialog in session["dialog"]:
+        dialogs.append({
+            "speaker": dialog["speaker"],
+            "utterance": dialog["utterance"],
+            "personaID": dialog["personaID"],
+            "date": dialog["date"],
+            "time": dialog["time"]
+        })
+
+# Convert to DataFrame for analysis
+df = pd.DataFrame(dialogs)
+
+# Identify gender of each speaker based on personaID
+# Define gender mappings (Assuming speaker1 and speaker2 are '여자')
+gender_mapping = {
+    "21649": "여자",
+    "31111": "남자"
+}
+
+# Add gender information
+df['gender'] = df['personaID'].map(gender_mapping)
+
+# Separate dialogues by gender
+female_dialogues = df[df['gender'] == "여자"]
+male_dialogues = df[df['gender'] == "남자"]  # Update if you have "남자" personas in the data
+
+# Analyze or display dialogue data
+print("Female Dialogues:")
+print(female_dialogues)
+
+print("\nMale Dialogues:")
+print(male_dialogues)
+
+# Save results to CSV for deeper analysis
+output_path_female = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/female3.csv"
+output_path_male = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/male3.csv"
+
+female_dialogues.to_csv(output_path_female, index=False)
+male_dialogues.to_csv(output_path_male, index=False)
+
+#print(f"Female dialogues saved to: {output_path_female}")
+#print(f"Male dialogues saved to: {output_path_male}")
+
+import json
+import pandas as pd
+from google.colab import drive
+
+# Mount Google Drive
+# drive.mount('/content/drive')
+
+# Define file path
+file_path = "K2-00003-CL20099-CP20853-07-08-S2.txt"
+
+# Load JSON file
+with open(file_path, 'r', encoding='utf-8') as file:
+    data = json.load(file)
+
+# Extract dialogues
+dialogs = []
+for session in data["sessionInfo"]:
+    for dialog in session["dialog"]:
+        dialogs.append({
+            "speaker": dialog["speaker"],
+            "utterance": dialog["utterance"],
+            "personaID": dialog["personaID"],
+            "date": dialog["date"],
+            "time": dialog["time"]
+        })
+
+# Convert to DataFrame for analysis
+df = pd.DataFrame(dialogs)
+
+# Identify gender of each speaker based on personaID
+# Define gender mappings (Assuming speaker1 and speaker2 are '여자')
+gender_mapping = {
+    "20099": "남자",
+    "20853": "남자"
+}
+
+# Add gender information
+df['gender'] = df['personaID'].map(gender_mapping)
+
+# Separate dialogues by gender
+female_dialogues = df[df['gender'] == "여자"]
+male_dialogues = df[df['gender'] == "남자"]  # Update if you have "남자" personas in the data
+
+# Analyze or display dialogue data
+print("Female Dialogues:")
+print(female_dialogues)
+
+print("\nMale Dialogues:")
+print(male_dialogues)
+
+# Save results to CSV for deeper analysis
+output_path_female = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/female4.csv"
+output_path_male = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/male4.csv"
+
+female_dialogues.to_csv(output_path_female, index=False)
+male_dialogues.to_csv(output_path_male, index=False)
+
+#print(f"Female dialogues saved to: {output_path_female}")
+#print(f"Male dialogues saved to: {output_path_male}")
+
+import json
+import pandas as pd
+from google.colab import drive
+
+# Mount Google Drive
+# drive.mount('/content/drive')
+
+# Define file path
+file_path = "K2-00008-CL21719-CP20954-16-04-S2.txt"
+
+# Load JSON file
+with open(file_path, 'r', encoding='utf-8') as file:
+    data = json.load(file)
+
+# Extract dialogues
+dialogs = []
+for session in data["sessionInfo"]:
+    for dialog in session["dialog"]:
+        dialogs.append({
+            "speaker": dialog["speaker"],
+            "utterance": dialog["utterance"],
+            "personaID": dialog["personaID"],
+            "date": dialog["date"],
+            "time": dialog["time"]
+        })
+
+# Convert to DataFrame for analysis
+df = pd.DataFrame(dialogs)
+
+# Identify gender of each speaker based on personaID
+# Define gender mappings (Assuming speaker1 and speaker2 are '여자')
+gender_mapping = {
+    "21719": "여자",
+    "20954": "남자"
+}
+
+# Add gender information
+df['gender'] = df['personaID'].map(gender_mapping)
+
+# Separate dialogues by gender
+female_dialogues = df[df['gender'] == "여자"]
+male_dialogues = df[df['gender'] == "남자"]  # Update if you have "남자" personas in the data
+
+# Analyze or display dialogue data
+print("Female Dialogues:")
+print(female_dialogues)
+
+print("\nMale Dialogues:")
+print(male_dialogues)
+
+# Save results to CSV for deeper analysis
+output_path_female = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/female5.csv"
+output_path_male = "/content/gdrive/MyDrive/Colab Notebooks/dialouges/male5.csv"
+
+female_dialogues.to_csv(output_path_female, index=False)
+male_dialogues.to_csv(output_path_male, index=False)
+
+#print(f"Female dialogues saved to: {output_path_female}")
+#print(f"Male dialogues saved to: {output_path_male}")
